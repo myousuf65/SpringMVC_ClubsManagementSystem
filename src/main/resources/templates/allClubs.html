@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Clubs</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/allclubs.css}"/>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial;
+        }
+        nav{
+            display: flex;
+            background-color: darkgrey;
+            align-items: center;
+            color: black;
+            padding: 10px;
+        }
+
+        .title{
+        }
+
+        .title:hover{
+            color: white;
+        }
+
+        .pages{
+            margin-left: auto;
+        }
+
+        .pages > div:hover{
+            color: white;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .singleClub {
+            border-radius: 20px;
+            width: 250px;
+            padding: 20px;
+            border: 1px solid black;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .singleClub>img{
+            width: 100%;
+            height: 250px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+
+        .buttons{
+            margin-top: 5px;
+        }
+
+        button.update-button {
+            padding: 5px;
+            border-radius: 10px;
+            background-color: blue;
+            color: white;
+            border: 0;
+            outline: 0;
+        }
+
+        button.update-button:hover{
+            background-color: white;
+            border: 1px solid blue;
+            color: blue;
+        }
+
+        button.delete-button {
+            padding: 5px;
+            border-radius: 10px;
+            background-color: red;
+            color: white;
+            border: 0;
+            outline: 0;
+        }
+        button.delete-button:hover{
+            background-color: white;
+            border: 1px solid red;
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="title">
+            <h3>Clubs Management System</h3>
+        </div>
+
+        <div class="pages">
+            <div>Create a Club</div>
+        </div>
+
+    </nav>
+
+
+    <div class="container">
+
+        <div th:each="club:${clubs}" class="singleClub">
+            <img th:src="${club.photoURL}" />
+            <h1 th:text="${club.title}" />
+
+            <div class="buttons">
+                <button  class="update-button">Update Club</button>
+                <button  class="delete-button">Delete Club</button>
+            </div>
+        </div>
+
+    </div>
+
+
+</body>
+</html>
